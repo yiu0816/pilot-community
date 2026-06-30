@@ -5,7 +5,7 @@ export default function Resources() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-700">
-          <h2 className="text-2xl font-semibold mb-4">✈️ Aviation Knowledge</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-white">✈️ Aviation Knowledge</h2>
           <ul className="space-y-3 text-gray-300">
             <li>
               <a href="https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak" 
@@ -14,6 +14,7 @@ export default function Resources() {
                 Pilot’s Handbook of Aeronautical Knowledge
               </a>
             </li>
+            <li>• The following are not provided yet:</li>
             <li>• FAA Handbooks</li>
             <li>• EASA Regulations</li>
             <li>• ICAO Documents</li>
@@ -22,7 +23,7 @@ export default function Resources() {
         </div>
 
         <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-700">
-          <h2 className="text-2xl font-semibold mb-4">🔗 Important Links</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-white">🔗 Important Links</h2>
           <ul className="space-y-3 text-blue-400">
             <li><a href="https://skybrary.aero" target="_blank">Skybrary</a></li>
             <li><a href="https://www.aviationweather.gov" target="_blank">Aviation Weather</a></li>

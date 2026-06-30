@@ -157,7 +157,7 @@ export default function Profile() {
 
         {/* Daily Learning Input */}
         <div className="bg-zinc-900 p-6 rounded-2xl mb-10">
-          <h2 className="text-2xl font-semibold mb-6">📖 Today's Learning</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-white">📖 Today's Learning</h2>
           <form onSubmit={handleSubmitLearning}>
             <textarea
               value={newEntry}
