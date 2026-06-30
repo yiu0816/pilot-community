@@ -7,6 +7,13 @@ export default function Resources() {
         <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-700">
           <h2 className="text-2xl font-semibold mb-4">✈️ Aviation Knowledge</h2>
           <ul className="space-y-3 text-gray-300">
+            <li>
+              <a href="https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak" 
+                 target="_blank" 
+                 className="text-blue-400 hover:underline">
+                Pilot’s Handbook of Aeronautical Knowledge
+              </a>
+            </li>
             <li>• FAA Handbooks</li>
             <li>• EASA Regulations</li>
             <li>• ICAO Documents</li>
@@ -17,9 +24,9 @@ export default function Resources() {
         <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-700">
           <h2 className="text-2xl font-semibold mb-4">🔗 Important Links</h2>
           <ul className="space-y-3 text-blue-400">
-            <li><a href="#" className="hover:underline">Skybrary</a></li>
-            <li><a href="#" className="hover:underline">Aviation Weather</a></li>
-            <li><a href="#" className="hover:underline">Flight Training Resources</a></li>
+            <li><a href="https://skybrary.aero" target="_blank">Skybrary</a></li>
+            <li><a href="https://www.aviationweather.gov" target="_blank">Aviation Weather</a></li>
+            <li><a href="https://www.faasafety.gov" target="_blank">FAA Safety</a></li>
           </ul>
         </div>
       </div>
