@@ -8,14 +8,13 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');   // Changed name
-  const router = useRouter();
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');   // Make sure setError is defined
+    setError('');
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -58,7 +57,7 @@ export default function Login() {
             />
           </div>
 
-          {errorMessage && <p className="text-red-400 text-sm">{errorMessage}</p>}
+          {error && <p className="text-red-400 text-sm">{error}</p>}
 
           <button
             type="submit"
