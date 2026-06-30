@@ -196,7 +196,7 @@ export default function Profile() {
             />
 
             {/* Photo Upload */}
-            <div className="mb-6">
+            {/*<div className="mb-6">
               <label className="text-white block mb-2">Add Photo (Optional)</label>
               <input
                 type="file"
@@ -204,7 +204,7 @@ export default function Profile() {
                 onChange={handlePhotoUpload}
                 className="text-white bg-zinc-800 border border-zinc-600 rounded-xl p-3 w-full"
               />
-            </div>
+            </div>*/}
 
             <button
               type="submit"
@@ -241,24 +241,7 @@ export default function Profile() {
                   <p className="text-gray-300"><strong>Reflection:</strong> {entry.reflection}</p>
                 )}
 
-                {entry.photo_path && (
-                  <div className="mt-4">
-                    <p className="text-xs text-gray-500 mb-2">Debug: {entry.photo_path}</p>
-                    <img 
-                      src={supabase.storage.from('learning-photos').getPublicUrl(entry.photo_path).data.publicUrl} 
-                      alt="Learning photo" 
-                      className="rounded-xl max-h-96 w-full object-cover border"
-                    />
-                  </div>
-                )}
 
-                {entry.photo_path && (
-                  <img 
-                    src={supabase.storage.from('learning-photos').getPublicUrl(entry.photo_path).data.publicUrl} 
-                    alt="Learning photo" 
-                    className="mt-4 rounded-xl max-h-96 w-full object-cover border"
-                  />
-                )}
               </div>
             ))
           )}
