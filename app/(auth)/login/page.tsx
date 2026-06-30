@@ -10,11 +10,12 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');   // Changed name
   const router = useRouter();
+  const [error, setError] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage('');
+    setError('');   // Make sure setError is defined
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -22,11 +23,9 @@ export default function Login() {
     });
 
     if (error) {
-      setErrorMessage(error.message);
-      console.error(error);
+      setError(error.message);
     } else {
-      router.push('/');           // Go to home
-      router.refresh();
+      window.location.reload(); // Auto refresh after login
     }
     setLoading(false);
   };
