@@ -118,6 +118,27 @@ export default function Profile() {
     if (file) setPhotoFile(file);
   };
 
+  const deleteLearningEntry = async (entryId: string) => {
+    if (!confirm("Delete this learning entry?")) return;
+
+    const { error } = await supabase
+      .from('learning_entries')
+      .delete()
+      .eq('id', entryId);
+
+    if (error) {
+      alert("Error deleting entry");
+    } else {
+      // Refresh list
+      const { data: entries } = await supabase
+        .from('learning_entries')
+        .select('*')
+        .eq('user_id', user?.id || '')
+        .order('created_at', { ascending: false });
+      setLearningEntries(entries || []);
+    }
+  };
+
   return (
     <ProtectedRoute>
       <div className="max-w-4xl mx-auto px-6 py-10">
@@ -175,7 +196,7 @@ export default function Profile() {
             />
 
             {/* Photo Upload */}
-            {/*<div className="mb-6">
+            <div className="mb-6">
               <label className="text-white block mb-2">Add Photo (Optional)</label>
               <input
                 type="file"
@@ -183,7 +204,7 @@ export default function Profile() {
                 onChange={handlePhotoUpload}
                 className="text-white bg-zinc-800 border border-zinc-600 rounded-xl p-3 w-full"
               />
-            </div>*/}
+            </div>
 
             <button
               type="submit"
@@ -194,9 +215,57 @@ export default function Profile() {
             </button>
           </form>
         </div>
-
+        
         {/* Learning History */}
         <h2 className="text-3xl font-semibold mb-6">📜 Learning History</h2>
+        <div className="space-y-6">
+          {learningEntries.length === 0 ? (
+            <p className="text-gray-400 text-center py-12">No learning entries yet.</p>
+          ) : (
+            learningEntries.map((entry) => (
+              <div key={entry.id} className="bg-zinc-900 p-6 rounded-2xl border border-zinc-700">
+                <div className="flex justify-between mb-3">
+                  <p className="text-sm text-gray-500">
+                    {new Date(entry.created_at).toLocaleDateString()}
+                  </p>
+                  <button
+                    onClick={() => deleteLearningEntry(entry.id)}
+                    className="text-red-400 hover:text-red-500 text-sm font-medium"
+                  >
+                    Delete
+                  </button>
+                </div>
+
+                <p className="text-lg text-white mb-4"><strong>What I Learned:</strong> {entry.what_learned}</p>
+                {entry.reflection && (
+                  <p className="text-gray-300"><strong>Reflection:</strong> {entry.reflection}</p>
+                )}
+
+                {entry.photo_path && (
+                  <div className="mt-4">
+                    <p className="text-xs text-gray-500 mb-2">Debug: {entry.photo_path}</p>
+                    <img 
+                      src={supabase.storage.from('learning-photos').getPublicUrl(entry.photo_path).data.publicUrl} 
+                      alt="Learning photo" 
+                      className="rounded-xl max-h-96 w-full object-cover border"
+                    />
+                  </div>
+                )}
+
+                {entry.photo_path && (
+                  <img 
+                    src={supabase.storage.from('learning-photos').getPublicUrl(entry.photo_path).data.publicUrl} 
+                    alt="Learning photo" 
+                    className="mt-4 rounded-xl max-h-96 w-full object-cover border"
+                  />
+                )}
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Learning History */}
+        {/*<h2 className="text-3xl font-semibold mb-6">📜 Learning History</h2>
         <div className="space-y-6">
           {learningEntries.length === 0 ? (
             <p className="text-gray-400 text-center py-12">No learning entries yet.</p>
@@ -227,11 +296,11 @@ export default function Profile() {
                       className="rounded-xl max-h-96 w-full object-cover border"
                     />
                   </div>
-                )}*/}
+                )}*/}{/*
               </div>
             ))
           )}
-        </div>
+        </div> */}
       </div>
     </ProtectedRoute>
   );
