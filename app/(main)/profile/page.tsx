@@ -236,12 +236,14 @@ export default function Profile() {
                   </button>
                 </div>
 
-                <p className="text-lg text-white mb-4"><strong>What I Learned:</strong> {entry.what_learned}</p>
+                <p className="text-lg text-white mb-4 whitespace-pre-wrap">
+                  <strong>What I Learned:</strong> {entry.what_learned}
+                </p>
                 {entry.reflection && (
-                  <p className="text-gray-300"><strong>Reflection:</strong> {entry.reflection}</p>
+                  <p className="text-gray-300 whitespace-pre-wrap">
+                    <strong>Reflection:</strong> {entry.reflection}
+                  </p>
                 )}
-
-
               </div>
             ))
           )}
