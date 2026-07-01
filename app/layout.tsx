@@ -5,6 +5,10 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "PilotHub - Aviation Community",
   description: "Community for Pilots",
+  manifest: "/manifest.json",   // Add this line
+  icons: {
+    icon: "/icon.png",  // Optional
+  },
 };
 
 export default function RootLayout({
