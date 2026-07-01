@@ -1,9 +1,11 @@
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-});
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Disable Turbopack for build
+  experimental: {
+    // You can try this if you want Turbopack
+    // turbopack: true,
+  },
+};
 
-module.exports = withPWA({
-  // your existing config
-});
+module.exports = nextConfig;
+
