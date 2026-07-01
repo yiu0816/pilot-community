@@ -31,9 +31,13 @@ export default function DailyLearning() {
               <p className="text-sm text-gray-500 mb-3">
                 {new Date(entry.created_at).toLocaleDateString()} • Posted by <span className="text-blue-400">{entry.username}</span>
               </p>
-              <p className="text-lg text-white mb-4"><strong>What I Learned:</strong> {entry.what_learned}</p>
+              <p className="text-lg text-white mb-4 whitespace-pre-wrap">
+                <strong>What I Learned:</strong> {entry.what_learned}
+              </p>
               {entry.reflection && (
-                <p className="text-gray-300"><strong>Reflection:</strong> {entry.reflection}</p>
+                <p className="text-gray-300 whitespace-pre-wrap">
+                  <strong>Reflection:</strong> {entry.reflection}
+                </p>
               )}
             </div>
           ))}

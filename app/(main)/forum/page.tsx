@@ -139,7 +139,9 @@ export default function Forum() {
                 </p>
               </div>
 
-              <p className="text-lg text-white leading-relaxed mb-6">{post.content}</p>
+              <p className="text-lg text-white leading-relaxed whitespace-pre-wrap">
+                {post.content}
+              </p>
 
               {/* Action Buttons */}
               <div className="flex items-center gap-6 border-t border-zinc-700 pt-4">
